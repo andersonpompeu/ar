@@ -29,20 +29,20 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: #f1f8f5;
   }
 
   .dark ::-webkit-scrollbar-track {
-    background: #0B1121;
+    background: #0B1F1C;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #0066FF;
+    background: #009688;
     border-radius: 5px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #0052cc;
+    background: #00796B;
   }
 }
 
@@ -55,7 +55,7 @@
   }
 
   .dark .glass {
-    background: rgba(30, 41, 59, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(21, 56, 50, 0.7);
+    border: 1px solid rgba(111, 216, 156, 0.1);
   }
 }

@@ -14,12 +14,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#0066FF", // Electric Blue
-        secondary: "#06B6D4", // Modern Cyan
-        accent: "#38BDF8", // Bright Sky
-        "background-light": "#F1F5F9", // Soft Slate
-        "background-dark": "#0B1121", // Deep Night
-        "surface-dark": "#151E32", // Dark Blue Grey
+        primary: "#009688", // Teal (main brand color)
+        "primary-dark": "#00796B", // Darker teal for hover states
+        secondary: "#6FD89C", // Aurora Green
+        accent: "#C4E89C", // Paradise Green (light accent)
+        "accent-dark": "#4DB8AC", // Waterfall (medium accent)
+        "background-light": "#F1F8F5", // Very light green tint
+        "background-dark": "#0B1F1C", // Dark teal background
+        "surface-dark": "#153832", // Dark teal surface
       },
       fontFamily: {
         display: ["Poppins", "sans-serif"],
