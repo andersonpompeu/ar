@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { supabase } from '../../services/supabase';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail } from 'lucide-react';
+import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -36,67 +39,68 @@ const Login: React.FC = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-100 dark:bg-slate-900">
-            <div className="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-xl w-full max-w-md">
-                <div className="text-center mb-8">
-                    <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Admin Login</h1>
-                    <p className="text-slate-500 dark:text-slate-400">Entre para gerenciar o sistema</p>
-                </div>
-
-                {error && (
-                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 text-sm">
-                        {error}
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-4">
+            <Card className="w-full max-w-md shadow-xl">
+                <CardHeader className="space-y-1 text-center">
+                    <div className="mx-auto w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-4">
+                        <Lock className="h-6 w-6 text-white" />
                     </div>
-                )}
+                    <CardTitle className="text-2xl font-bold">Admin Login</CardTitle>
+                    <CardDescription>Entre para gerenciar o sistema</CardDescription>
+                </CardHeader>
 
-                <form onSubmit={handleLogin} className="space-y-6">
-                    <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Email
-                        </label>
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Mail className="h-5 w-5 text-slate-400" />
-                            </div>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-md leading-5 bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-white placeholder-slate-500 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                                placeholder="admin@exemplo.com"
-                                required
-                            />
+                <CardContent>
+                    {error && (
+                        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg mb-4 text-sm">
+                            {error}
                         </div>
-                    </div>
+                    )}
 
-                    <div>
-                        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
-                            Senha
-                        </label>
-                        <div className="relative">
-                            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <Lock className="h-5 w-5 text-slate-400" />
+                    <form onSubmit={handleLogin} className="space-y-4">
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                                Email
+                            </label>
+                            <div className="relative">
+                                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                                <Input
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="pl-9"
+                                    placeholder="admin@exemplo.com"
+                                    required
+                                />
                             </div>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="block w-full pl-10 pr-3 py-2 border border-slate-300 rounded-md leading-5 bg-white dark:bg-slate-700 dark:border-slate-600 dark:text-white placeholder-slate-500 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
-                                placeholder="••••••••"
-                                required
-                            />
                         </div>
-                    </div>
 
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                    >
-                        {loading ? 'Entrando...' : 'Entrar'}
-                    </button>
-                </form>
-            </div>
+                        <div className="space-y-2">
+                            <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
+                                Senha
+                            </label>
+                            <div className="relative">
+                                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                                <Input
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="pl-9"
+                                    placeholder="••••••••"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <Button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full"
+                        >
+                            {loading ? 'Entrando...' : 'Entrar'}
+                        </Button>
+                    </form>
+                </CardContent>
+            </Card>
         </div>
     );
 };
